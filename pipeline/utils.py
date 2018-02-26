@@ -60,8 +60,11 @@ def vector_to_image(vector):
     else:
         raise RuntimeError 
     img = vector.clone()
-    img[mask] /= 2.
-    img[mask] += .5
+    #img[mask] /= 2.
+    #img[mask] += .5
+    # Suggested in: https://github.com/JannerM/intrinsics-network/issues/3
+    img = img * (1. - (mask == 1).float() / 2.)
+    img = img + (mask == 1).float() * .5
     # img = (vector / 2.) + 5.
     return img
 
