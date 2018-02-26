@@ -1,6 +1,6 @@
 import sys, torch, torch.nn as nn, torch.nn.functional as F
 from torch.autograd import Variable
-import primitives
+from . import primitives
 
 '''
 Predicts reflectance, shape, and lighting conditions given an image
@@ -117,8 +117,6 @@ if __name__ == '__main__':
     # lights = Variable(torch.randn(5,4))
     decomposer = Decomposer()
     out = decomposer.forward(inp, mask)
-    print decomposer
-    print [i.size() for i in out]
-
-
+    print(decomposer)
+    print([i.size() for i in out])
 

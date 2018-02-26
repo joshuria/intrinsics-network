@@ -33,21 +33,18 @@ class DecomposerTrainer:
             losses.update( [l.data[0] for l in [refl_loss, shape_loss, lights_loss] ])
             progress.update(self.loader.batch_size)
             progress.set_description( '%.5f | %.5f | %.5f | %.3f' % (refl_loss.data[0], depth_loss.data[0], shape_loss.data[0], lights_loss.data[0]) )
-        print '<Train> Losses: ', losses.avgs
+        print('<Train> Losses: ', losses.avgs)
         return losses.avgs
 
     def train(self):
         # t = trange(iters)
         # for i in t:
         err = self.__epoch()
-        # print 
+        # print()
             # t.set_description( str(err) )
         return err
 
 if __name__ == '__main__':
     import sys
     sys.path.append('../')
-
-
-
 

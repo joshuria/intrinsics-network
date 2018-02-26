@@ -85,7 +85,7 @@ def colormap(img):
         batch_max = img.max(1)[0].max(2)[0].repeat(1,m,n)
         img = img / batch_max * (steps-1)
         indices = torch.floor(img)
-        # print indices.min(1)[0].min(2)[0].squeeze(), indices.max(1)[0].max(2)[0].squeeze()
+        # print(indices.min(1)[0].min(2)[0].squeeze(), indices.max(1)[0].max(2)[0].squeeze())
     indices = indices.view(-1)
     cimg = CMAP.index_select(0, indices.long())
     cimg = cimg.view(b, m, n, c)
@@ -107,14 +107,14 @@ if __name__ == '__main__':
     d3 = 3 - read_img('test_images/5502_depth.png')
     d4 = torch.randn(1,256,256)
     batch = torch.cat((d1, d2, d3, d4), 0)
-    print batch.size()
+    print(batch.size())
     cimg = colormap(batch)
-    print cimg.size()
+    print(cimg.size())
     for ind in range(batch.size(0)):
         original = batch[ind].numpy()
-        print original.shape
+        print(original.shape)
         colored = cimg[ind].numpy().transpose(1,2,0)
-        print colored.shape
+        print(colored.shape)
         scipy.misc.imsave('test_images/original_' + str(ind) + '.png', original)
         scipy.misc.imsave('test_images/colored_' + str(ind) + '.png', colored)
 #     # c = 3

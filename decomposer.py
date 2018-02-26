@@ -49,7 +49,7 @@ logger = pipeline.Logger(['refl', 'shape', 'lights'], args.save_path)
 trainer = pipeline.DecomposerTrainer(model, train_loader, args.lr, args.lights_mult)
 
 for epoch in range(args.num_epochs):
-    print '<Main> Epoch {}'.format(epoch)
+    print('<Main> Epoch {}'.format(epoch))
 
     ## save model state
     state = model.state_dict()

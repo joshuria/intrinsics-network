@@ -35,7 +35,7 @@ def visualize_shader(model, loader, save_path, save_raw = False):
             ## shading targets
             targets.extend([img.repeat(3,1,1) for img in targ.split(1)])
 
-        # print len(inputs), len(predictions), len(targets)
+        # print(len(inputs), len(predictions), len(targets))
         images = [[inputs[i], predictions[i], targets[i]] for i in range(len(inputs))]
         images = [img for sublist in images for img in sublist]
         # pdb.set_trace()
@@ -81,7 +81,7 @@ def visualize_relit_shader(model, loader, save_path, params, save_raw = False):
                 targets.extend([img.repeat(3,1,1) for img in targ.split(1)])
 
 
-        # print len(inputs), len(predictions), len(targets)
+        # print(len(inputs), len(predictions), len(targets))
         images = [[inputs[i], predictions[i], targets[i]] for i in range(len(inputs))]
         images = [img for sublist in images for img in sublist]
         # pdb.set_trace()
@@ -156,7 +156,7 @@ def visualize_decomposer(model, loader, save_path, epoch, save_raw = False):
     # scipy.misc.imsave(fullpath, grid)
 
     losses = [refl_loss, shape_loss, lights_loss]
-    print '<Val> Losses: ', losses
+    print('<Val> Losses: ', losses)
     # torchvision.utils.save_image(grid, os.path.join(save_path, 'shader.png'))
     return losses
 
@@ -286,9 +286,9 @@ def visualize_composer(model, loader, save_path, epoch, raw=False):
         masks.append(mask)
 
         # pdb.set_trace()
-        # print shad_targ.size()
-        # print shad_pred.size()
-        # print [len(sublist) for sublist in splits]
+        # print(shad_targ.size())
+        # print(shad_pred.size())
+        # print([len(sublist) for sublist in splits])
         splits = [sublist[ind] for ind in range(len(splits[0])) for sublist in splits]
         images.extend(splits)
 
@@ -316,7 +316,7 @@ def visualize_composer(model, loader, save_path, epoch, raw=False):
     shad_loss /= float(ind)
     depth_normals_loss /= float(ind)
     depth_normals_loss = depth_normals_loss.data[0]
-    print 'depth_normals_loss: ', depth_normals_loss
+    print('depth_normals_loss: ', depth_normals_loss)
 
     # pdb.set_trace()
     grid = torchvision.utils.make_grid(images, nrow=7).cpu().numpy().transpose(1,2,0)
@@ -355,7 +355,7 @@ def visualize_composer_alt(model, loader, save_path, epoch, raw=False):
         
         ####
         shad_pred = model.shader(shape_pred, lights_pred)
-        print 'shad_pred: ', shad_pred.size()
+        print('shad_pred: ', shad_pred.size())
         # shad_pred = shad_pred.repeat(1,3,1,1)
 
         # relit = pipeline.relight(model.shader, shape_pred, lights_pred, 6)
@@ -395,9 +395,9 @@ def visualize_composer_alt(model, loader, save_path, epoch, raw=False):
         masks.append(mask)
 
         # pdb.set_trace()
-        # print shad_targ.size()
-        # print shad_pred.size()
-        # print [len(sublist) for sublist in splits]
+        # print(shad_targ.size())
+        # print(shad_pred.size())
+        # print([len(sublist) for sublist in splits])
         splits = [sublist[ind] for ind in range(len(splits[0])) for sublist in splits]
         images.extend(splits)
 
@@ -452,11 +452,4 @@ def save_raw(images, masks, labels, save_path):
         # pdb.set_trace()
         fullpath = os.path.join(save_path, str(img_num) + '_' + lab + '.png')
         scipy.misc.imsave(fullpath, alpha)
-
-
-
-
-
-
-
 

@@ -39,7 +39,3 @@ class Trainer:
             # t.set_description( str(err) )
         return self.model
 
-
-
-
-
