@@ -36,7 +36,8 @@ def visualize_shader(model, loader, save_path, save_raw = False):
             targets.extend([img.repeat(3,1,1) for img in targ.split(1)])
 
         # print(len(inputs), len(predictions), len(targets))
-        images = [[inputs[i], predictions[i], targets[i]] for i in range(len(inputs))]
+        # targets is list of float tensor in cpu?!
+        images = [[inputs[i], predictions[i], targets[i].cuda()] for i in range(len(inputs))]
         images = [img for sublist in images for img in sublist]
         # pdb.set_trace()
         if save_raw:
