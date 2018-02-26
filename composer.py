@@ -9,7 +9,7 @@ parser.add_argument('--decomposer',         type=str,   default='saved/vector_de
         help='decomposer network state file')
 parser.add_argument('--shader',             type=str,   default='saved/vector_shader_0.01/model.t7',
         help='shader network file')
-parser.add_argument('--data_path',          type=str,   default='../dataset/output/',
+parser.add_argument('--data_path',          type=str,   default='dataset/output/',
         help='base folder of datasets')
 parser.add_argument('--unlabeled',          type=str,   default='car_train',
         help='unlabeled dataset(s), separated by commas, to use during training')
@@ -99,11 +99,4 @@ for epoch in range(args.num_epochs):
 
     ## save plots of the errors
     logger.update(train_losses, val_losses)
-
-
-
-
-
-
-
 
