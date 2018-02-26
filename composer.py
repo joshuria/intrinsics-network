@@ -88,7 +88,7 @@ for epoch in range(args.num_epochs):
 
     if args.save_model:
         state = model.state_dict()
-        torch.save( state, open(os.path.join(args.save_path, 'state.t7'), 'w') )
+        torch.save( state, open(os.path.join(args.save_path, 'state.t7'), 'wb') )
 
     
     ## visualize intrinisc image predictions and reconstructions of the val set

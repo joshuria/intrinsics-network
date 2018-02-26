@@ -53,7 +53,7 @@ for epoch in range(args.num_epochs):
 
     ## save model state
     state = model.state_dict()
-    torch.save( state, open(os.path.join(args.save_path, 'state.t7'), 'w') )
+    torch.save( state, open(os.path.join(args.save_path, 'state.t7'), 'wb') )
     
     ## get losses and save visualization on val images
     val_losses = pipeline.visualize_decomposer(model, val_loader, args.save_path, epoch)
