@@ -37,7 +37,7 @@ def decode(encoder, decoder, upsampler):
 ## normalize to unit vectors
 def normalize(normals):
     magnitude = torch.pow(normals, 2).sum(1)
-    magnitude = magnitude.sqrt().repeat(1,3,1,1)
+    magnitude = magnitude.sqrt().unsqueeze(1).repeat(1,3,1,1)
     normed = normals / (magnitude + 1e-6)
     return normed
 

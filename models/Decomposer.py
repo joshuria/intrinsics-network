@@ -106,7 +106,7 @@ class Decomposer(nn.Module):
         ## we don't count them in error
         reflectance[mask] = 0
         normed[mask] = 0
-        depth[mask[:,0]] = 0
+        depth[mask[:,0].unsqueeze(1)] = 0
 
         return reflectance, depth, normed, lights
 
