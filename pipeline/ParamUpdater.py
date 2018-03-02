@@ -2,9 +2,13 @@ class ParamUpdater:
 
     ## 10-normals,shader_10-shader
     def __init__(self, transfer):
+        print('Transfer: ' + str(transfer))
         epoch_sep = transfer.split('_')
-        self.num_sep = [i.split('-') for i in epoch_sep]
-        self.num_sep = [[int(i[0]), i[1]] for i in self.num_sep]
+        #self.num_sep = [i.split('-') for i in epoch_sep]
+        #self.num_sep = [[int(i[0]), i[1]] for i in self.num_sep]
+        self.num_sep = []
+        for i in range(0, len(epoch_sep), 2):
+            self.num_sep.append([int(epoch_sep[i]), epoch_sep[i+1]])
         
         current = 0
         self.time_steps = [current]

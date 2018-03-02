@@ -30,7 +30,7 @@ class ComposerDataset(torch.utils.data.Dataset):
             self.set_specific = []
             for sel in selections:
                 if sel == 'lights':
-                    files = np.load('../dataset/arrays/' + array + '.npy')[:size_per_dataset,:]
+                    files = np.load('dataset/arrays/' + array + '.npy')[:size_per_dataset,:]
                     assert files.shape[0] == size_per_dataset
                 ## reflectance, shading
                 elif sel == 'input':

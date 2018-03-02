@@ -1,5 +1,6 @@
 import os, shutil, subprocess, numpy as np, scipy.misc, torch
 from torch.autograd import Variable
+from config import enable_visualization, blender_path
 
 class Render:
 
@@ -30,9 +31,8 @@ class Render:
         subprocess.Popen(['rm', '-r', path])
 
     def __blender(self, lights_path, write_path, verbose):
-        # script_path = '../dataset/vis_lights.py'
-        script_path = '/om/user/janner/mit/urop/intrinsic/dataset/vis_lights.py'
-        command =   [   '/om/user/janner/blender-2.76b-linux-glibc211-x86_64/blender', 
+        script_path = 'dataset/deprecated/vis_lights.py'
+        command =   [   blender_path, 
                         '--background', '-noaudio', '--python', script_path, '--', \
                         '--lights_path', lights_path, '--save_path', write_path]
         if verbose:
